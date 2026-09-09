@@ -1,0 +1,23 @@
+# Simulation outputs
+*.vcd
+*.wlf
+*.vstf
+transcript
+modelsim.ini
+
+# Vivado
+*.jou
+*.log
+*.str
+*.bit
+*.ltx
+.Xil/
+vivado*.jou
+vivado*.log
+
+# Temporary files
+*.bak
+*~
+\#*\#
+.DS_Store
+Thumbs.db

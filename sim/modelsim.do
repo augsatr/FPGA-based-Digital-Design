@@ -1,0 +1,27 @@
+compile_file work ../src/cpu/pipeline_reg_if_id.v
+compile_file work ../src/cpu/pipeline_reg_id_ex.v
+compile_file work ../src/cpu/pipeline_reg_ex_mem.v
+compile_file work ../src/cpu/pipeline_reg_mem_wb.v
+compile_file work ../src/cpu/hazard_detection.v
+compile_file work ../src/cpu/forwarding_unit.v
+compile_file work ../src/cpu/alu_32.v
+compile_file work ../src/cpu/register_file_32.v
+compile_file work ../src/cpu/control_unit_32.v
+compile_file work ../src/cpu/cpu_pipeline.v
+compile_file work ../src/mem/instruction_memory.v
+compile_file work ../src/mem/data_memory.v
+compile_file work ../src/mem/cache_controller.v
+compile_file work ../src/bus/wishbone_bus.v
+compile_file work ../src/peripherals/uart_fifo.v
+compile_file work ../src/peripherals/uart_advanced.v
+compile_file work ../src/peripherals/timer.v
+compile_file work ../src/peripherals/interrupt_controller.v
+compile_file work ../src/peripherals/gpio_controller.v
+compile_file work ../src/peripherals/seven_seg_4digit.v
+compile_file work ../src/soc_top.v
+
+sim_module pipeline_tb pipeline_tb.v
+sim_module uart_advanced_tb uart_advanced_tb.v
+sim_module interrupt_tb interrupt_tb.v
+sim_module timer_tb timer_tb.v
+sim_module gpio_tb gpio_tb.v
