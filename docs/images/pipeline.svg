@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="Consolas, monospace">
+  <defs>
+    <linearGradient id="stageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#2471A3;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="regGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E67E22;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#CA6F1E;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="sh">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="#1a1a2e" rx="10"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" fill="#E8E8E8" font-size="18" font-weight="bold">5-Stage Pipeline — Instruction Flow</text>
+  <text x="450" y="50" text-anchor="middle" fill="#888" font-size="11">Hazard Detection + Data Forwarding | Branch Resolution at EX Stage</text>
+
+  <!-- ==================== CYCLE TIMELINE ==================== -->
+  <!-- Cycle numbers -->
+  <text x="170" y="80" text-anchor="middle" fill="#666" font-size="10">Cycle 1</text>
+  <text x="310" y="80" text-anchor="middle" fill="#666" font-size="10">Cycle 2</text>
+  <text x="450" y="80" text-anchor="middle" fill="#666" font-size="10">Cycle 3</text>
+  <text x="590" y="80" text-anchor="middle" fill="#666" font-size="10">Cycle 4</text>
+  <text x="730" y="80" text-anchor="middle" fill="#666" font-size="10">Cycle 5</text>
+
+  <!-- Pipeline stages as boxes -->
+  <!-- Instruction 1 -->
+  <rect x="100" y="100" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="160" y="125" text-anchor="middle" fill="white" font-size="11" font-weight="bold">IF</text>
+
+  <rect x="240" y="100" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="300" y="125" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ID</text>
+
+  <rect x="380" y="100" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="440" y="125" text-anchor="middle" fill="white" font-size="11" font-weight="bold">EX</text>
+
+  <rect x="520" y="100" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="580" y="125" text-anchor="middle" fill="white" font-size="11" font-weight="bold">MEM</text>
+
+  <rect x="660" y="100" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="720" y="125" text-anchor="middle" fill="white" font-size="11" font-weight="bold">WB</text>
+
+  <text x="80" y="125" text-anchor="middle" fill="#3498DB" font-size="9">I1</text>
+
+  <!-- Instruction 2 -->
+  <rect x="240" y="160" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="300" y="185" text-anchor="middle" fill="white" font-size="11" font-weight="bold">IF</text>
+
+  <rect x="380" y="160" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="440" y="185" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ID</text>
+
+  <rect x="520" y="160" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="580" y="185" text-anchor="middle" fill="white" font-size="11" font-weight="bold">EX</text>
+
+  <rect x="660" y="160" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="720" y="185" text-anchor="middle" fill="white" font-size="11" font-weight="bold">MEM</text>
+
+  <rect x="800" y="160" width="80" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="840" y="185" text-anchor="middle" fill="white" font-size="11" font-weight="bold">WB</text>
+
+  <text x="80" y="185" text-anchor="middle" fill="#3498DB" font-size="9">I2</text>
+
+  <!-- Instruction 3 -->
+  <rect x="380" y="220" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="440" y="245" text-anchor="middle" fill="white" font-size="11" font-weight="bold">IF</text>
+
+  <rect x="520" y="220" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="580" y="245" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ID</text>
+
+  <rect x="660" y="220" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="720" y="245" text-anchor="middle" fill="white" font-size="11" font-weight="bold">EX</text>
+
+  <rect x="800" y="220" width="80" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="840" y="245" text-anchor="middle" fill="white" font-size="11" font-weight="bold">MEM</text>
+
+  <text x="80" y="245" text-anchor="middle" fill="#3498DB" font-size="9">I3</text>
+
+  <!-- Instruction 4 -->
+  <rect x="520" y="280" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="580" y="305" text-anchor="middle" fill="white" font-size="11" font-weight="bold">IF</text>
+
+  <rect x="660" y="280" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="720" y="305" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ID</text>
+
+  <rect x="800" y="280" width="80" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="840" y="305" text-anchor="middle" fill="white" font-size="11" font-weight="bold">EX</text>
+
+  <text x="80" y="305" text-anchor="middle" fill="#3498DB" font-size="9">I4</text>
+
+  <!-- Instruction 5 -->
+  <rect x="660" y="340" width="120" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="720" y="365" text-anchor="middle" fill="white" font-size="11" font-weight="bold">IF</text>
+
+  <rect x="800" y="340" width="80" height="40" rx="5" fill="url(#stageGrad)" filter="url(#sh)"/>
+  <text x="840" y="365" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ID</text>
+
+  <text x="80" y="365" text-anchor="middle" fill="#3498DB" font-size="9">I5</text>
+
+  <!-- ==================== HAZARDS & FORWARDING ==================== -->
+  <!-- Pipeline Registers -->
+  <rect x="218" y="95" width="8" height="50" rx="2" fill="url(#regGrad)" filter="url(#sh)"/>
+  <rect x="358" y="95" width="8" height="50" rx="2" fill="url(#regGrad)" filter="url(#sh)"/>
+  <rect x="498" y="95" width="8" height="50" rx="2" fill="url(#regGrad)" filter="url(#sh)"/>
+  <rect x="638" y="95" width="8" height="50" rx="2" fill="url(#regGrad)" filter="url(#sh)"/>
+
+  <!-- Forwarding arrows -->
+  <path d="M 580 140 C 580 155 440 155 440 160" stroke="#FFD700" stroke-width="2" fill="none" stroke-dasharray="4" marker-end="url(#arrowYellow)"/>
+  <defs><marker id="arrowYellow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#FFD700"/></marker></defs>
+  <text x="530" y="152" fill="#FFD700" font-size="8">EX→EX</text>
+
+  <path d="M 720 140 C 720 155 580 155 580 160" stroke="#FFD700" stroke-width="2" fill="none" stroke-dasharray="4" marker-end="url(#arrowYellow)"/>
+  <text x="670" y="152" fill="#FFD700" font-size="8">MEM→EX</text>
+
+  <!-- Hazard stall indicator -->
+  <rect x="520" y="200" width="120" height="15" rx="3" fill="#E74C3C" opacity="0.7"/>
+  <text x="580" y="211" text-anchor="middle" fill="white" font-size="8" font-weight="bold">STALL (load-use)</text>
+
+  <!-- Branch flush -->
+  <rect x="380" y="265" width="120" height="15" rx="3" fill="#E74C3C" opacity="0.7"/>
+  <text x="440" y="276" text-anchor="middle" fill="white" font-size="8" font-weight="bold">FLUSH (branch)</text>
+
+  <!-- ==================== KEY ==================== -->
+  <rect x="50" y="400" width="800" height="90" rx="8" fill="#222244" stroke="#444" stroke-width="1"/>
+  <text x="70" y="422" fill="#E8E8E8" font-size="12" font-weight="bold">PIPELINE MECHANICS</text>
+
+  <rect x="70" y="435" width="15" height="10" rx="2" fill="#3498DB"/>
+  <text x="92" y="444" fill="#aaa" font-size="9">Pipeline Stage</text>
+
+  <rect x="200" y="435" width="15" height="10" rx="2" fill="#E67E22"/>
+  <text x="222" y="444" fill="#aaa" font-size="9">Pipeline Register</text>
+
+  <line x1="370" y1="440" x2="410" y2="440" stroke="#FFD700" stroke-width="2" stroke-dasharray="4"/>
+  <text x="420" y="444" fill="#aaa" font-size="9">Data Forwarding Path</text>
+
+  <rect x="570" y="435" width="15" height="10" rx="2" fill="#E74C3C" opacity="0.7"/>
+  <text x="592" y="444" fill="#aaa" font-size="9">Stall / Flush</text>
+
+  <text x="70" y="470" fill="#888" font-size="8">CPI = 1 (ideal) | Stall penalty: 1 cycle (load-use) | Branch penalty: 2 cycles (taken)</text>
+</svg>

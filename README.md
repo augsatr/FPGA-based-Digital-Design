@@ -2,6 +2,14 @@
 
 A complete System-on-Chip featuring a 5-stage pipelined processor, cache, interrupt controller, enhanced UART, GPIO, and timer — all synthesized onto the Basys 3 FPGA (Xilinx Artix-7 XC7A35T).
 
+## Diagrams
+
+| Diagram | Description |
+|---------|-------------|
+| ![System Architecture](docs/images/architecture.svg) | Full SoC block diagram with all components |
+| ![Pipeline Stages](docs/images/pipeline.svg) | 5-stage instruction flow with forwarding and hazards |
+| ![Memory Map](docs/images/memory-map.svg) | Address space layout and peripheral registers |
+
 ## Architecture
 
 ```

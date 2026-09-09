@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" font-family="Consolas, monospace">
+  <defs>
+    <linearGradient id="cpuGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#2C5F8A;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="busGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#E8A838;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#D4892A;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="memGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5CB85C;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#3D8B3D;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="periphGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D9534F;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#A94442;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="ioGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9B59B6;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#7D3C98;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#1a1a2e" rx="10"/>
+
+  <!-- Title -->
+  <text x="500" y="35" text-anchor="middle" fill="#E8E8E8" font-size="20" font-weight="bold">Advanced FPGA SoC — System Architecture</text>
+  <text x="500" y="55" text-anchor="middle" fill="#888" font-size="12">Basys 3 (Xilinx Artix-7 XC7A35T) | 100MHz | RISC-V RV32I Pipeline</text>
+
+  <!-- ==================== CPU BLOCK ==================== -->
+  <rect x="30" y="80" width="940" height="180" rx="8" fill="none" stroke="#4A90D9" stroke-width="2" filter="url(#shadow)"/>
+  <text x="50" y="100" fill="#4A90D9" font-size="14" font-weight="bold">5-STAGE PIPELINE CPU</text>
+
+  <!-- IF Stage -->
+  <rect x="50" y="110" width="150" height="60" rx="6" fill="url(#cpuGrad)" filter="url(#shadow)"/>
+  <text x="125" y="135" text-anchor="middle" fill="white" font-size="12" font-weight="bold">IF</text>
+  <text x="125" y="152" text-anchor="middle" fill="#ddd" font-size="9">Instruction Fetch</text>
+  <text x="125" y="164" text-anchor="middle" fill="#bbb" font-size="8">PC, PC+4, IMem</text>
+
+  <!-- Arrow -->
+  <line x1="200" y1="140" x2="220" y2="140" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <defs><marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4A90D9"/></marker></defs>
+
+  <!-- ID Stage -->
+  <rect x="220" y="110" width="150" height="60" rx="6" fill="url(#cpuGrad)" filter="url(#shadow)"/>
+  <text x="295" y="135" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ID</text>
+  <text x="295" y="152" text-anchor="middle" fill="#ddd" font-size="9">Instruction Decode</text>
+  <text x="295" y="164" text-anchor="middle" fill="#bbb" font-size="8">RegFile, Control, ImmGen</text>
+
+  <!-- Arrow -->
+  <line x1="370" y1="140" x2="390" y2="140" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- EX Stage -->
+  <rect x="390" y="110" width="150" height="60" rx="6" fill="url(#cpuGrad)" filter="url(#shadow)"/>
+  <text x="465" y="135" text-anchor="middle" fill="white" font-size="12" font-weight="bold">EX</text>
+  <text x="465" y="152" text-anchor="middle" fill="#ddd" font-size="9">Execute</text>
+  <text x="465" y="164" text-anchor="middle" fill="#bbb" font-size="8">ALU, Forwarding, Branch</text>
+
+  <!-- Arrow -->
+  <line x1="540" y1="140" x2="560" y2="140" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- MEM Stage -->
+  <rect x="560" y="110" width="150" height="60" rx="6" fill="url(#cpuGrad)" filter="url(#shadow)"/>
+  <text x="635" y="135" text-anchor="middle" fill="white" font-size="12" font-weight="bold">MEM</text>
+  <text x="635" y="152" text-anchor="middle" fill="#ddd" font-size="9">Memory Access</text>
+  <text x="635" y="164" text-anchor="middle" fill="#bbb" font-size="8">Load/Store, Cache</text>
+
+  <!-- Arrow -->
+  <line x1="710" y1="140" x2="730" y2="140" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- WB Stage -->
+  <rect x="730" y="110" width="150" height="60" rx="6" fill="url(#cpuGrad)" filter="url(#shadow)"/>
+  <text x="805" y="135" text-anchor="middle" fill="white" font-size="12" font-weight="bold">WB</text>
+  <text x="805" y="152" text-anchor="middle" fill="#ddd" font-size="9">Write Back</text>
+  <text x="805" y="164" text-anchor="middle" fill="#bbb" font-size="8">RegFile Write, Mux</text>
+
+  <!-- Hazard Detection -->
+  <rect x="220" y="185" width="130" height="30" rx="4" fill="#2C5F8A" stroke="#4A90D9" stroke-width="1"/>
+  <text x="285" y="205" text-anchor="middle" fill="#FFD700" font-size="9" font-weight="bold">Hazard Detection</text>
+
+  <!-- Forwarding Unit -->
+  <rect x="390" y="185" width="130" height="30" rx="4" fill="#2C5F8A" stroke="#4A90D9" stroke-width="1"/>
+  <text x="455" y="205" text-anchor="middle" fill="#FFD700" font-size="9" font-weight="bold">Forwarding Unit</text>
+
+  <!-- Pipeline Regs label -->
+  <text x="210" y="108" text-anchor="middle" fill="#666" font-size="7">|Reg|</text>
+  <text x="380" y="108" text-anchor="middle" fill="#666" font-size="7">|Reg|</text>
+  <text x="550" y="108" text-anchor="middle" fill="#666" font-size="7">|Reg|</text>
+  <text x="720" y="108" text-anchor="middle" fill="#666" font-size="7">|Reg|</text>
+
+  <!-- ==================== BUS ==================== -->
+  <rect x="30" y="280" width="940" height="45" rx="6" fill="url(#busGrad)" filter="url(#shadow)"/>
+  <text x="500" y="308" text-anchor="middle" fill="white" font-size="14" font-weight="bold">WISHBONE BUS INTERCONNECT  |  32-bit Address  |  32-bit Data  |  Byte-Enable</text>
+
+  <!-- CPU to Bus arrow -->
+  <line x1="500" y1="260" x2="500" y2="280" stroke="#E8A838" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  <defs><marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#E8A838"/></marker></defs>
+
+  <!-- ==================== MEMORY ==================== -->
+  <rect x="30" y="350" width="310" height="110" rx="8" fill="none" stroke="#5CB85C" stroke-width="2" filter="url(#shadow)"/>
+  <text x="50" y="370" fill="#5CB85C" font-size="13" font-weight="bold">MEMORY SUBSYSTEM</text>
+
+  <rect x="45" y="380" width="140" height="65" rx="5" fill="url(#memGrad)" filter="url(#shadow)"/>
+  <text x="115" y="400" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Instruction Memory</text>
+  <text x="115" y="415" text-anchor="middle" fill="#ddd" font-size="8">1KB ROM</text>
+  <text x="115" y="428" text-anchor="middle" fill="#bbb" font-size="7">0x00000000</text>
+
+  <rect x="200" y="380" width="130" height="65" rx="5" fill="url(#memGrad)" filter="url(#shadow)"/>
+  <text x="265" y="400" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Data Memory</text>
+  <text x="265" y="415" text-anchor="middle" fill="#ddd" font-size="8">1KB RAM</text>
+  <text x="265" y="428" text-anchor="middle" fill="#bbb" font-size="7">0x00001000</text>
+
+  <!-- Cache label -->
+  <rect x="350" y="350" width="140" height="110" rx="8" fill="none" stroke="#5CB85C" stroke-width="1" stroke-dasharray="4"/>
+  <text x="420" y="370" text-anchor="middle" fill="#5CB85C" font-size="11" font-weight="bold">Cache Controller</text>
+  <text x="420" y="390" text-anchor="middle" fill="#aaa" font-size="8">Direct-Mapped</text>
+  <text x="420" y="405" text-anchor="middle" fill="#aaa" font-size="8">Write-Back</text>
+  <text x="420" y="420" text-anchor="middle" fill="#aaa" font-size="8">256 Lines x 4 Words</text>
+  <text x="420" y="435" text-anchor="middle" fill="#aaa" font-size="8">4KB Total</text>
+
+  <!-- Bus to Memory arrow -->
+  <line x1="185" y1="325" x2="185" y2="350" stroke="#E8A838" stroke-width="2" marker-end="url(#arrowOrange)"/>
+
+  <!-- ==================== PERIPHERALS ==================== -->
+  <rect x="510" y="350" width="460" height="110" rx="8" fill="none" stroke="#D9534F" stroke-width="2" filter="url(#shadow)"/>
+  <text x="530" y="370" fill="#D9534F" font-size="13" font-weight="bold">PERIPHERALS</text>
+
+  <rect x="525" y="380" width="100" height="65" rx="5" fill="url(#periphGrad)" filter="url(#shadow)"/>
+  <text x="575" y="400" text-anchor="middle" fill="white" font-size="10" font-weight="bold">UART</text>
+  <text x="575" y="415" text-anchor="middle" fill="#ddd" font-size="8">TX/RX FIFO</text>
+  <text x="575" y="428" text-anchor="middle" fill="#bbb" font-size="7">RTS/CTS</text>
+
+  <rect x="640" y="380" width="100" height="65" rx="5" fill="url(#periphGrad)" filter="url(#shadow)"/>
+  <text x="690" y="400" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Timer</text>
+  <text x="690" y="415" text-anchor="middle" fill="#ddd" font-size="8">32-bit</text>
+  <text x="690" y="428" text-anchor="middle" fill="#bbb" font-size="7">Compare+IRQ</text>
+
+  <rect x="755" y="380" width="100" height="65" rx="5" fill="url(#periphGrad)" filter="url(#shadow)"/>
+  <text x="805" y="400" text-anchor="middle" fill="white" font-size="10" font-weight="bold">GPIO</text>
+  <text x="805" y="415" text-anchor="middle" fill="#ddd" font-size="8">16-bit Port</text>
+  <text x="805" y="428" text-anchor="middle" fill="#bbb" font-size="7">Edge IRQ</text>
+
+  <rect x="870" y="380" width="90" height="65" rx="5" fill="url(#periphGrad)" filter="url(#shadow)"/>
+  <text x="915" y="400" text-anchor="middle" fill="white" font-size="10" font-weight="bold">IntCtrl</text>
+  <text x="915" y="415" text-anchor="middle" fill="#ddd" font-size="8">8 Sources</text>
+  <text x="915" y="428" text-anchor="middle" fill="#bbb" font-size="7">Priority</text>
+
+  <!-- Bus to Peripherals arrow -->
+  <line x1="740" y1="325" x2="740" y2="350" stroke="#E8A838" stroke-width="2" marker-end="url(#arrowOrange)"/>
+
+  <!-- ==================== I/O ==================== -->
+  <rect x="30" y="490" width="940" height="90" rx="8" fill="none" stroke="#9B59B6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="50" y="510" fill="#9B59B6" font-size="13" font-weight="bold">BOARD I/O</text>
+
+  <rect x="50" y="520" width="140" height="45" rx="5" fill="url(#ioGrad)" filter="url(#shadow)"/>
+  <text x="120" y="540" text-anchor="middle" fill="white" font-size="10" font-weight="bold">7-Segment Display</text>
+  <text x="120" y="555" text-anchor="middle" fill="#ddd" font-size="8">4-digit hex</text>
+
+  <rect x="210" y="520" width="120" height="45" rx="5" fill="url(#ioGrad)" filter="url(#shadow)"/>
+  <text x="270" y="540" text-anchor="middle" fill="white" font-size="10" font-weight="bold">LED Output</text>
+  <text x="270" y="555" text-anchor="middle" fill="#ddd" font-size="8">16-bit</text>
+
+  <rect x="350" y="520" width="120" height="45" rx="5" fill="url(#ioGrad)" filter="url(#shadow)"/>
+  <text x="410" y="540" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Switch Input</text>
+  <text x="410" y="555" text-anchor="middle" fill="#ddd" font-size="8">16-bit GPIO In</text>
+
+  <rect x="490" y="520" width="120" height="45" rx="5" fill="url(#ioGrad)" filter="url(#shadow)"/>
+  <text x="550" y="540" text-anchor="middle" fill="white" font-size="10" font-weight="bold">UART Pins</text>
+  <text x="550" y="555" text-anchor="middle" fill="#ddd" font-size="8">RX/TX/RTS/CTS</text>
+
+  <rect x="630" y="520" width="120" height="45" rx="5" fill="url(#ioGrad)" filter="url(#shadow)"/>
+  <text x="690" y="540" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Buttons</text>
+  <text x="690" y="555" text-anchor="middle" fill="#ddd" font-size="8">Ext IRQ 0-4</text>
+
+  <rect x="770" y="520" width="180" height="45" rx="5" fill="url(#ioGrad)" filter="url(#shadow)"/>
+  <text x="860" y="540" text-anchor="middle" fill="white" font-size="10" font-weight="bold">100MHz Clock</text>
+  <text x="860" y="555" text-anchor="middle" fill="#ddd" font-size="8">Basys 3 Oscillator</text>
+
+  <!-- Bus to I/O arrow -->
+  <line x1="500" y1="460" x2="500" y2="490" stroke="#E8A838" stroke-width="2" marker-end="url(#arrowOrange)"/>
+
+  <!-- ==================== LEGEND ==================== -->
+  <rect x="30" y="600" width="940" height="85" rx="8" fill="#222244" stroke="#444" stroke-width="1"/>
+  <text x="50" y="622" fill="#E8E8E8" font-size="12" font-weight="bold">LEGEND</text>
+
+  <rect x="50" y="632" width="20" height="12" rx="2" fill="#4A90D9"/>
+  <text x="78" y="643" fill="#aaa" font-size="9">CPU Pipeline</text>
+
+  <rect x="170" y="632" width="20" height="12" rx="2" fill="#E8A838"/>
+  <text x="198" y="643" fill="#aaa" font-size="9">Bus Interconnect</text>
+
+  <rect x="320" y="632" width="20" height="12" rx="2" fill="#5CB85C"/>
+  <text x="348" y="643" fill="#aaa" font-size="9">Memory</text>
+
+  <rect x="430" y="632" width="20" height="12" rx="2" fill="#D9534F"/>
+  <text x="458" y="643" fill="#aaa" font-size="9">Peripherals</text>
+
+  <rect x="570" y="632" width="20" height="12" rx="2" fill="#9B59B6"/>
+  <text x="598" y="643" fill="#aaa" font-size="9">Board I/O</text>
+
+  <text x="50" y="670" fill="#666" font-size="8">FPGA SoC with 5-Stage Pipelined RISC-V CPU, Wishbone Bus, Cache, UART, Timer, GPIO, Interrupt Controller | Basys 3 Target</text>
+</svg>
