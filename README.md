@@ -6,10 +6,9 @@ A complete System-on-Chip featuring a 5-stage pipelined processor, cache, interr
 
 | Diagram | Description |
 |---------|-------------|
-<img width="1200" height="600" alt="NV_1117_Rahman_Large" src="https://github.com/user-attachments/assets/a2c26313-caa2-4401-804f-e1b1915437e5" />
-
-
-| ![Memory Map](docs/images/memory-map.svg) | Address space layout and peripheral registers |
+| ![System Architecture](docs/images/architecture.png) | Full SoC block diagram with all components |
+| ![Pipeline Stages](docs/images/pipeline.png) | 5-stage instruction flow with forwarding and hazards |
+| ![Memory Map](docs/images/memory-map.png) | Address space layout and peripheral registers |
 
 ## Architecture
 
